@@ -18,7 +18,7 @@ namespace BlogAPIDemo.Services.Services
             throw new NotImplementedException();
         }
 
-        public PostDto DindById(int id)
+        public PostDto FindById(int id)
         {
             throw new NotImplementedException();
         }

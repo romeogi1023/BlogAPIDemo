@@ -7,7 +7,7 @@ namespace BlogAPIDemo.Services.Interfaces
     public interface IBaseService<TEntity,TDto>
     {
         List<TDto> GetList();
-        TDto DindById(int id);
+        TDto FindById(int id);
 
         bool Create(TDto tDto);
 
