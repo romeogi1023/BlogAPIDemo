@@ -18,6 +18,10 @@ using Microsoft.IdentityModel.Tokens;
 using BlogAPIDemo.Domain.Context;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
+using BlogAPIDemo.Services.Interfaces;
+using BlogAPIDemo.Domain.Entities;
+using BlogAPIDemo.Services.Repository;
+using BlogAPIDemo.Services.Services;
 
 namespace BlogAPIDemo
 {
@@ -38,6 +42,8 @@ namespace BlogAPIDemo
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
                 options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
             });
+            services.AddScoped<IRepository<Category>, CategoryRepository>();
+            services.AddScoped<ICategoriService, CategoriService>();
             services.AddControllers();
 
             var appSettingsSection = Configuration.GetSection("AppSettings");
