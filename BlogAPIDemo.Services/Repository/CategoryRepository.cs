@@ -25,7 +25,11 @@ namespace BlogAPIDemo.Services.Repository
             _blogContext.Category.Add(entity);
             _blogContext.SaveChanges();
         }
-
+        public void Update(Category entityToUpdate, Category entity)
+        {
+            _blogContext.Category.Update(entityToUpdate);
+            _blogContext.SaveChanges();
+        }
         public void Delete(Category entity)
         {
             _blogContext.Category.Remove(entity);
@@ -38,10 +42,6 @@ namespace BlogAPIDemo.Services.Repository
         public Category Get(long id) => _blogContext.Category.SingleOrDefault(b => b.Id == id);
 
         public IEnumerable<Category> GetAll() => _blogContext.Category.Include(author => author.Post).ToList();
-        public void Update(Category entityToUpdate, Category entity)
-        {
-            _blogContext.Category.Update(entityToUpdate);
-            _blogContext.SaveChanges();
-        }
+    
     }
 }

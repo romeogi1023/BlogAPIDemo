@@ -65,7 +65,7 @@ namespace BlogAPIDemo.Services.Services
             try
             {
                 var categori = _mapper.Map<Category>(categoryDto);
-                _categoryRepository.Update(categori,categori);
+                _categoryRepository.Update(categori);
                 return true;
             }
             catch (Exception e)

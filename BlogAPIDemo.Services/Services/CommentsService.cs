@@ -21,10 +21,10 @@ namespace BlogAPIDemo.Services.Services
  
         public bool Create(CommentsDto commentDto)
         {
-            var post = _mapper.Map<Comments>(commentDto);
-            if (post != null)
+            var comment = _mapper.Map<Comments>(commentDto);
+            if (comment != null)
             {
-                _commentsRepository.Add(post);
+                _commentsRepository.Add(comment);
                 return true;
             }
             else
@@ -49,19 +49,32 @@ namespace BlogAPIDemo.Services.Services
 
         public CommentsDto FindById(int id)
         {
-            var post = _commentsRepository.Find(s => s.Id == id);
-            var postDto = _mapper.Map<CommentsDto>(post);
-            return postDto;
+            var comments = _commentsRepository.Find(s => s.Id == id);
+            var commentsDto= _mapper.Map<CommentsDto>(comments);
+            return commentsDto;
         }
 
         public List<CommentsDto> GetList()
         {
-            throw new NotImplementedException();
+            var commentList = _commentsRepository.GetAll();
+            var commentDtos = _mapper.Map<List<CommentsDto>>(commentList);
+            return commentDtos;
         }
 
-        public bool Update(CommentsDto entity)
+        public bool Update(CommentsDto commentDto)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var comment = _mapper.Map<Comments>(commentDto);
+                _commentsRepository.Update(comment);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+          
+           
         }
     }
 }
