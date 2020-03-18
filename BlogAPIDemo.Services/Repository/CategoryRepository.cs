@@ -25,9 +25,9 @@ namespace BlogAPIDemo.Services.Repository
             _blogContext.Category.Add(entity);
             _blogContext.SaveChanges();
         }
-        public void Update(Category entityToUpdate, Category entity)
+        public void Update (Category entity)
         {
-            _blogContext.Category.Update(entityToUpdate);
+            _blogContext.Category.Update(entity);
             _blogContext.SaveChanges();
         }
         public void Delete(Category entity)
