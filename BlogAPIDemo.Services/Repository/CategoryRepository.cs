@@ -36,12 +36,17 @@ namespace BlogAPIDemo.Services.Repository
             _blogContext.SaveChanges();
         }
 
-        public Category Find(Expression<Func<Category, bool>> where) => _blogContext.Category.Where(where).FirstOrDefault();
+        public Category Find(Expression<Func<Category, bool>> where) 
+            => _blogContext.Category.Where(where).FirstOrDefault();
       
-        public IEnumerable<Category> FindAll(Expression<Func<Category, bool>> where) => _blogContext.Category.Where(where);
-        public Category Get(long id) => _blogContext.Category.SingleOrDefault(b => b.Id == id);
+        public IEnumerable<Category> FindAll(Expression<Func<Category, bool>> where)
+            => _blogContext.Category.Where(where);
 
-        public IEnumerable<Category> GetAll() => _blogContext.Category.Include(author => author.Post).ToList();
+        public Category Get(long id) 
+            => _blogContext.Category.SingleOrDefault(b => b.Id == id);
+
+        public IEnumerable<Category> GetAll() => 
+            _blogContext.Category.Include(author => author.Post).ToList();
     
     }
 }

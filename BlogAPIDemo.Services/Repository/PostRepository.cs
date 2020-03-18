@@ -37,6 +37,7 @@ namespace BlogAPIDemo.Services.Repository
 
         public Post Find(Expression<Func<Post, bool>> where)
             => _blogContext.Post.Where(where).FirstOrDefault();
+
         public IEnumerable<Post> FindAll(Expression<Func<Post, bool>> where)
             => _blogContext.Post.Where(where);
 

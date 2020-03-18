@@ -37,10 +37,13 @@ namespace BlogAPIDemo.Services.Repository
 
         public Comments Find(Expression<Func<Comments, bool>> where)
           => _blogContext.Comments.Where(where).FirstOrDefault();
+
         public IEnumerable<Comments> FindAll(Expression<Func<Comments, bool>> where)
           => _blogContext.Comments.Where(where);
+       
         public Comments Get(long id)
             => _blogContext.Comments.SingleOrDefault(b => b.Id == id);
+        
         public IEnumerable<Comments> GetAll()
             => _blogContext.Comments.ToList();
 
