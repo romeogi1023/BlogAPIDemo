@@ -43,7 +43,13 @@ namespace BlogAPIDemo
                 options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
             });
             services.AddScoped<IRepository<Category>, CategoryRepository>();
+            services.AddScoped<IRepository<Comments>, CommentsRepository>();
+            services.AddScoped<IRepository<Post>, PostRepository>();
+
             services.AddScoped<ICategoriService, CategoriService>();
+            services.AddScoped<ICommentService, CommentsService>();
+            services.AddScoped<IPostService, PostService>();
+
             services.AddControllers();
 
             var appSettingsSection = Configuration.GetSection("AppSettings");
